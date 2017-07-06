@@ -1,4 +1,5 @@
 require_relative 'bike'
+require 'pry'
 
 class DockingStation
   attr_reader :bike
@@ -12,6 +13,9 @@ class DockingStation
   end
 
   def dock bike
+    #binding.pry
+    #@bike = nil
+    fail("Very sorry, but this station is already full") if @bike
     @bike = bike
   end
 
