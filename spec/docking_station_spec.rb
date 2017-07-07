@@ -8,7 +8,7 @@ describe DockingStation do
   end
 
   it "releases a working bike" do
-    bike = Bike.new
+    bike = double(:bike)
     subject.dock(bike, true)
     released_bike = subject.release_bike
     expect(released_bike.working?).to eq true
@@ -19,8 +19,8 @@ describe DockingStation do
   end
 
   it 'raises an error when attempting to dock a bike at a docking station already at full capacity' do
-    subject.capacity.times { subject.dock(Bike.new, true) }
-    expect{subject.dock(Bike.new, true)}.to raise_error("Very sorry, but this station is already full")
+    subject.capacity.times { subject.dock(double(:bike), true) }
+    expect{subject.dock(double(:bike), true)}.to raise_error("Very sorry, but this station is already full")
   end
 
   it { should respond_to(:dock).with(2).arguments }
@@ -30,7 +30,7 @@ describe DockingStation do
   # end
 
   it 'should not release broken bikes' do
-    subject.dock(Bike.new, false)
+    subject.dock(double(:bike), false)
     expect{subject.release_bike}.to raise_error("Sorry, bike is broken, cannot release")
   end
 
