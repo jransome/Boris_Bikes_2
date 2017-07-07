@@ -2,21 +2,20 @@ require_relative 'bike'
 require 'pry'
 
 class DockingStation
-  attr_reader :bike
+  attr_reader :bikes
+
+  def initialize
+    @bikes = []
+  end
 
   def release_bike
-    if @bike == nil
-      fail("I do apologise, there are no bikes available")
-    else
-      @bike
-    end
+    fail("I do apologise, there are no bikes available") if @bikes.empty?
+    @bikes.pop
   end
 
   def dock bike
-    #binding.pry
-    #@bike = nil
-    fail("Very sorry, but this station is already full") if @bike
-    @bike = bike
+    fail("Very sorry, but this station is already full") if @bikes.length >= 20
+    @bikes << bike
   end
 
 end

@@ -1,9 +1,7 @@
 require 'docking_station'
 
 describe DockingStation do
-  # it 'responds to release_bike method' do
-  #   expect(subject).to respond_to(:release_bike)
-#  it { is_expected.to respond_to(:release_bike)}
+
   it { should respond_to(:release_bike)}
 
   it "releases a working bike" do
@@ -18,7 +16,7 @@ describe DockingStation do
   end
 
   it 'raises an error when attempting to dock a bike at a docking station already at full capacity' do
-    subject.dock(Bike.new)
+    20.times { subject.dock(Bike.new) }
     expect{subject.dock(Bike.new)}.to raise_error("Very sorry, but this station is already full")
   end
 
