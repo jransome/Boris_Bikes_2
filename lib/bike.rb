@@ -1,7 +1,9 @@
 class Bike
- attr_accessor :working
+  def report_broken
+    @working = false
+  end
+
   def working?
     @working
   end
-
 end

@@ -17,9 +17,8 @@ class DockingStation
     @bikes.pop
   end
 
-  def dock(bike, working)
+  def dock(bike)
     fail("Very sorry, but this station is already full") if full?
-    bike.working = working
     @bikes << bike
   end
 
